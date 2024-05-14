@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import time
 
-os.environ['REPLICATE_API_TOKEN'] = ""
+os.environ['REPLICATE_API_TOKEN'] = st.secrets["replicate_credentials"]["TOKEN"]
 
 # Function to modify the output by adding spaces between each word with a delay
 def modify_output(input):
