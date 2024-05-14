@@ -1,0 +1,6 @@
+streamlit
+embedchain
+pysqlite3-binary
+replicate
+youtube-transcript-api
+pytube
