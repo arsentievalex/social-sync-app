@@ -143,7 +143,7 @@ def main():
         st.title("SocialSync: YouTube to Social Media")
         st.header("Generate social media content from YouTube videos with AI")
     with col6:
-        st.image("Untitled design (6).png", width=270)
+        st.image("image.png", width=270)
 
     st.write('')
     st.write('')
