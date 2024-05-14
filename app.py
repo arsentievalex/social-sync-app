@@ -3,6 +3,7 @@ import os
 import streamlit as st
 import time
 
+os.environ['REPLICATE_API_TOKEN'] = ""
 
 # Function to modify the output by adding spaces between each word with a delay
 def modify_output(input):
@@ -25,7 +26,7 @@ def load_data(url):
     return bot
 
 
-def write_linkedin(app):
+def write_linkedin(app, source_url):
 
     linkedin_guidance = f"""
     LinkedIn Post Guidance:
@@ -33,9 +34,10 @@ def write_linkedin(app):
     Keep professional tone and avoid slang or cliches.
     Keep it concise: Aim for 1-3 paragraphs.
     Use "\n" to separate paragraphs.
-    Structure the post: Use short paragraphs and bullet points to make the post easy to read.
+    Use short paragraphs and bullet points to make the post easy to read.
     You can use emojis, but don’t overdo it.
     Include a Call to Action: Encourage readers to engage with your post.
+    In the end, mention the source URL: {source_url}
     Choose relevant hashtags, but don’t overdo it: maximum 3 hashtags.
     
     The post should be significantly different from all the previous posts. Here are the previous posts:
@@ -50,7 +52,7 @@ def write_linkedin(app):
     return modify_output(response)
 
 
-def write_x(app):
+def write_x(app, source_url):
 
     x_guidance = f"""
     Twitter Thread Guidance:
@@ -62,6 +64,7 @@ def write_x(app):
     Be personal and use phrases like "I think", "I believe" or "I learned".
     In the last tweet, suggest following me for more content.
     Start each tweet with "Tweet #1", "Tweet #2", etc.
+    In the last tweet of the thread, mention the source URL: {source_url}
     Reset the numbering for each new thread.
     Use "\n" to separate tweets.
     
@@ -77,15 +80,21 @@ def write_x(app):
     return modify_output(response)
 
 
-def write_instagram(app):
+def write_instagram(app, source_url):
 
-    instagram_guidance = """
+    instagram_guidance = f"""
     Instagram Post Guidance:
     Be very brief: Aim for 3-4 short sentences.
     Use a casual tone and emojis.
     Be personal and share your thoughts or feelings about the video.
     Include a call to action to engage your followers.
+    In the end, mention the source URL: {source_url}
+    Use "\n" to separate ideas.
     Use a few relevant hashtags, but don’t overdo it.
+    
+    The instagram post should be significantly different from all the previous posts. Here are the previous posts:
+    {st.session_state['instagram_post']}
+    
     """
 
     response = app.chat(f"Write a Twitter thread with key takeaways from this video. Use the following guidance: {instagram_guidance}")
@@ -97,8 +106,8 @@ def write_instagram(app):
 
 
 @st.experimental_fragment
-def linkedind_fragment(app, placeholder):
-    st.write_stream(write_linkedin(app))
+def linkedind_fragment(app, placeholder, source_url):
+    st.write_stream(write_linkedin(app, source_url))
 
     with placeholder:
         # check if button already exists
@@ -107,8 +116,8 @@ def linkedind_fragment(app, placeholder):
 
 
 @st.experimental_fragment
-def twitter_fragment(app, placeholder):
-    st.write_stream(write_x(app))
+def twitter_fragment(app, placeholder, source_url):
+    st.write_stream(write_x(app, source_url))
 
     with placeholder:
         # check if button already exists
@@ -117,8 +126,8 @@ def twitter_fragment(app, placeholder):
 
 
 @st.experimental_fragment
-def instagram_fragment(app, placeholder):
-    st.write_stream(write_instagram(app))
+def instagram_fragment(app, placeholder, source_url):
+    st.write_stream(write_instagram(app, source_url))
 
     with placeholder:
         # check if button already exists
@@ -172,34 +181,22 @@ def main():
             st.video(yt_url)
 
         html_code = """
-        <p style='color:#249EDC;'>Powered by Snowflake Arctic ❄</p>
+        <p style='color:#249EDC; font-weight: bold;'>Powered by Snowflake Arctic ❄</p>
         """
-
         st.markdown(html_code, unsafe_allow_html=True)
 
     if run_button:
         app = load_data(yt_url)
 
         with col1:
-            linkedind_fragment(app, button_placeholder1)
+            linkedind_fragment(app, button_placeholder1, source_url=yt_url)
 
         with col2:
-            twitter_fragment(app, button_placeholder2)
+            twitter_fragment(app, button_placeholder2, source_url=yt_url)
 
         with col3:
-            instagram_fragment(app, button_placeholder3)
+            instagram_fragment(app, button_placeholder3, source_url=yt_url)
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
