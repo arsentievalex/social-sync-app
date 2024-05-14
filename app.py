@@ -171,6 +171,12 @@ def main():
         if yt_url:
             st.video(yt_url)
 
+        html_code = """
+        <p style='color:#249EDC;'>Powered by Snowflake Arctic ❄</p>
+        """
+
+        st.markdown(html_code, unsafe_allow_html=True)
+
     if run_button:
         app = load_data(yt_url)
 
