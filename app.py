@@ -155,7 +155,7 @@ def main():
         button_placeholder3 = st.container()
 
     with st.sidebar:
-        replicate_token = st.text_input("Your Replicate API Token", type="password", value=st.secrets["replicate_credentials"]["TOKEN"])
+        replicate_token = st.text_input("Your Replicate API Token", type="password")
         yt_url = st.text_input("Enter YouTube URL")
         run_button = st.button('Generate content')
 
