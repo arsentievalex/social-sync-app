@@ -62,11 +62,11 @@ Welcome to SocialSync! This Streamlit app uses a novel Snowflake Arctic LLM to g
 
 ## Contributing
 
-We welcome contributions to improve SocialSync. Please fork the repository and create a pull request with your changes.
+All contributions are welcome. Please fork the repository and create a pull request with your changes.
 
 ## Contact
 
-If you have any questions or feedback, please feel free to reach out to us at [arsentiev9393@gmail.com](mailto:arsentiev9393@gmail.com).
+If you have any questions or feedback, please feel free to reach out to me at [arsentiev9393@gmail.com](mailto:arsentiev9393@gmail.com).
 
 ---
 
