@@ -14,7 +14,7 @@ Welcome to SocialSync! This Streamlit app uses a novel Snowflake Arctic LLM to g
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/yourusername/socialsync.git
+    git clone https://github.com/arsentievalex/social-sync-app.git
     cd socialsync
     ```
 
