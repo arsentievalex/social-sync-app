@@ -169,7 +169,7 @@ def main():
 
     if run_button:
         if not replicate_token:
-        st.warning("Please enter your Replicate API Token!")
+            st.warning("Please enter your Replicate API Token!")
         
         elif not yt_url:
             st.warning("Please insert YouTube URL!")
