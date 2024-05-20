@@ -167,20 +167,25 @@ def main():
         """
         st.markdown(html_code, unsafe_allow_html=True)
 
-    if run_button and replicate_token:
-        os.environ['REPLICATE_API_TOKEN'] = replicate_token
-        app = load_data(yt_url)
-
-        with col1:
-            linkedin_fragment(app, button_placeholder1, source_url=yt_url)
-
-        with col2:
-            twitter_fragment(app, button_placeholder2, source_url=yt_url)
-
-        with col3:
-            instagram_fragment(app, button_placeholder3, source_url=yt_url)
-    else:
+    if run_button:
+        if not replicate_token:
         st.warning("Please enter your Replicate API Token!")
+        
+        elif not yt_url:
+            st.warning("Please insert YouTube URL!")
+            os.environ['REPLICATE_API_TOKEN'] = replicate_token
+            
+        else:
+            app = load_data(yt_url)
+    
+            with col1:
+                linkedin_fragment(app, button_placeholder1, source_url=yt_url)
+    
+            with col2:
+                twitter_fragment(app, button_placeholder2, source_url=yt_url)
+    
+            with col3:
+                instagram_fragment(app, button_placeholder3, source_url=yt_url)
 
 
 if __name__ == "__main__":
