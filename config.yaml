@@ -11,4 +11,4 @@ llm:
 embedder:
   provider: huggingface
   config:
-    model: 'snowflake/arctic-embed-l'
+    model: 'snowflake-arctic-embed-s'
