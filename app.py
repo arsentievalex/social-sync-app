@@ -156,7 +156,7 @@ def main():
 
     with st.sidebar:
         replicate_token = st.text_input("Your Replicate API Token", type="password")
-        yt_url = st.text_input("Enter YouTube URL")
+        yt_url = st.text_input("Enter YouTube URL", value="https://youtu.be/njttWa08pwo?si=pR2z14HZtM8M0_4O")
         run_button = st.button('Generate content')
 
         if yt_url:
