@@ -30,14 +30,6 @@ Welcome to SocialSync! This Streamlit app uses a novel Snowflake Arctic LLM to g
 
     Create a `config.yaml` file in the root directory and add your configuration settings.
 
-4. **Set Up Environment Variables:**
-
-    Create a `.streamlit/secrets.toml` file in the root directory and add your Replicate API Token:
-
-    ```toml
-    [replicate_credentials]
-    TOKEN = "your_replicate_api_token"
-    ```
 
 ## Usage
 
